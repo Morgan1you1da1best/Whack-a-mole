@@ -72,10 +72,12 @@ def updateScore():
     data['scoreText'].destroy()
     scoreBox = TextAsset('Score = '+str(data['score']))
     data['scoreText'] = Sprite(scoreBox,(0,300))
-
+    if data['score'] == 1000:
+        Sprite(whiteRectangle)
+        
 
 if __name__ == '__main__':
-    
+
     data = {}
     data['score'] = 0
     data['frames'] = 0
@@ -85,23 +87,26 @@ if __name__ == '__main__':
     data['mole4'] = False
     data['mole5'] = False
     data['mole6'] = False
-    
+
     scoreBox = TextAsset('Score = 0')
-     
-red = Color(0xFF0000,1)
-black = Color(0x000000,1)
 
-blackOutline = LineStyle(1,black) #pixels, color
-redCircle = CircleAsset(50,blackOutline,red) #Radius, outline, fill.
-regCircle = CircleAsset(50,blackOutline, black) #Radius, outline, fill.
+    red = Color(0xFF0000,1)
+    black = Color(0x000000,1)
+    white = Color(0xFFFFFF,1)
+    
+    blackOutline = LineStyle(1,black) #pixels, color
+    redCircle = CircleAsset(50,blackOutline,red) #Radius, outline, fill.
+    regCircle = CircleAsset(50,blackOutline, black) #Radius, outline, fill.
+    whiteRectangle = RectangleAsset(1000, 1000, blackOutline, white) 
 
-data['scoreText'] = Sprite(scoreBox, (0,300))
-Sprite(redCircle,(50,50))
-Sprite(regCircle,(50,50))
-Sprite(regCircle,(150,50))
-Sprite(regCircle,(250,50))
-Sprite(regCircle,(50,150))
-Sprite(regCircle,(150,150))
-Sprite(regCircle,(250,150))
-App().listenMouseEvent("click", mouseClick)
-App().run(step)
+
+    data['scoreText'] = Sprite(scoreBox, (0,300))
+    Sprite(redCircle,(50,50))
+    Sprite(regCircle,(50,50))
+    Sprite(regCircle,(150,50))
+    Sprite(regCircle,(250,50))
+    Sprite(regCircle,(50,150))
+    Sprite(regCircle,(150,150))
+    Sprite(regCircle,(250,150))
+    App().listenMouseEvent("click", mouseClick)
+    App().run(step)
