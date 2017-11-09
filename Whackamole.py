@@ -73,7 +73,7 @@ def updateScore():
     scoreBox = TextAsset('Score = '+str(data['score']))
     data['scoreText'] = Sprite(scoreBox,(0,300))
     if data['score'] == 1000:
-        Sprite(whiteRectangle)
+        Sprite(whiteRectangle) == True
         
 
 if __name__ == '__main__':
