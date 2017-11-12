@@ -2,6 +2,9 @@
 #11/1/17
 #whackaMole.py
 
+print('Use the mouse to click on the red circle.')
+print('Only press on each red circle once to avoid glitching.')
+
 from ggame import *
 from random import randint
 
@@ -64,7 +67,7 @@ def mouseClick(event):
 
 def step():
     data['frames'] += 1
-    if data['frames'] == 50:
+    if data['frames'] == 100:
         moveCircle()
 
 def updateScore():
@@ -74,19 +77,13 @@ def updateScore():
     data['scoreText'] = Sprite(scoreBox,(0,300))
     if data['score'] == 1000:
         Sprite(whiteRectangle) == True
-        
+        print('you win!')
 
 if __name__ == '__main__':
 
     data = {}
     data['score'] = 0
     data['frames'] = 0
-    data['mole1'] = False
-    data['mole2'] = False 
-    data['mole3'] = False
-    data['mole4'] = False
-    data['mole5'] = False
-    data['mole6'] = False
 
     scoreBox = TextAsset('Score = 0')
 
@@ -98,7 +95,6 @@ if __name__ == '__main__':
     redCircle = CircleAsset(50,blackOutline,red) #Radius, outline, fill.
     regCircle = CircleAsset(50,blackOutline, black) #Radius, outline, fill.
     whiteRectangle = RectangleAsset(1000, 1000, blackOutline, white) 
-
 
     data['scoreText'] = Sprite(scoreBox, (0,300))
     Sprite(redCircle,(50,50))
