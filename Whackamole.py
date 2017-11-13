@@ -8,6 +8,9 @@ print('Only press on each red circle once to avoid glitching.')
 from ggame import *
 from random import randint
 
+#The moveCircle function sprites red circles and toggles data['moleX'] true or false. 
+#This function also randomly moves the redCircle between the six circle areas with help by the step function.
+
 def moveCircle():
     num = randint(1,6)
     if num == 1:
@@ -42,7 +45,10 @@ def moveCircle():
         Sprite(regCircle,(250,150)) 
         
     data['frames'] = 0
-    
+
+#The mouseClick function connects certain bountries to a click.
+#The mouseClick function also corresponds score with the combination of data['moleX'] == True and the bountry.
+
 def mouseClick(event):
     if event.x <= 100 and event.y <= 100 and data['mole1'] == True:
         updateScore()
@@ -56,7 +62,7 @@ def mouseClick(event):
         updateScore()
     if event.x >=200 and event.x <=300 and event.y >= 100 and event.y <= 200 and data['mole6'] == True:
         updateScore()
-    
+
     data['mole1'] = False
     data['mole2'] = False
     data['mole3'] = False
@@ -65,10 +71,16 @@ def mouseClick(event):
     data['mole6'] = False
     data['frames'] = 0
 
+#The step function is necessary for the movement of the redCircles.
+#The step function controls frames of the "game"
+
 def step():
     data['frames'] += 1
     if data['frames'] == 100:
         moveCircle()
+#The updateScore function is triggered by the mouseClick function to add 100 points when critea is met.
+#The updateScore function sprites the score box
+#When 1000 points are scored the game is won; triggering a white screen and printing "you win!"
 
 def updateScore():
     data['score'] += 100
@@ -79,7 +91,12 @@ def updateScore():
         Sprite(whiteRectangle) == True
         print('you win!')
 
+
+#All data inside __name__ == '__main__' consists of graphics, sprites, and run functions. 
+
 if __name__ == '__main__':
+
+#starting points for frames and score.
 
     data = {}
     data['score'] = 0
